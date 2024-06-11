@@ -21,7 +21,7 @@ class GameCanvas {
         this.ctx = this.canvas.getContext('2d') as CanvasRenderingContext2D
     }
 
-    get context(): CanvasRenderingContext2D {
+    getContext(): CanvasRenderingContext2D {
         return this.ctx
     }
 
