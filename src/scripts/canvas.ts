@@ -1,6 +1,7 @@
 class GameCanvas {
     private canvas: HTMLCanvasElement = document.getElementById('game') as HTMLCanvasElement
     private ctx: CanvasRenderingContext2D
+    private isFullScreen: boolean = false
 
     constructor() {
         if (this.canvas == null) {
@@ -15,16 +16,43 @@ class GameCanvas {
         }
     
         this.canvas.width = window.innerWidth
-        this.canvas.height = this.canvas.width / 1.5
+        this.canvas.height = window.innerHeight
     
         this.ctx = this.canvas.getContext('2d') as CanvasRenderingContext2D
-
     }
 
     get context(): CanvasRenderingContext2D {
         return this.ctx
     }
 
+    toggleFullScreen() {
+        if (this.isFullScreen) {
+            this.disableFullScreen()
+        } else {
+            this.enableFullScreen()
+        }
+    }
+
+    enableFullScreen() {
+        if (this.isFullScreen) return
+
+        this.isFullScreen = true
+        this.canvas.requestFullscreen()
+        this.updateSize()
+    }
+
+    disableFullScreen() {
+        if (!this.isFullScreen) return
+
+        this.isFullScreen = false
+        document.exitFullscreen()
+        this.updateSize()
+    }
+
+    private updateSize() {
+        this.canvas.width = window.innerWidth
+        this.canvas.height = window.innerHeight
+    }
 }
 
 export { GameCanvas }

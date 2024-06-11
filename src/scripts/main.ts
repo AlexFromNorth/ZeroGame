@@ -1,3 +1,9 @@
 import { GameCanvas } from "./canvas";
 
-console.log(new GameCanvas().context)
+const gameCanvas = new GameCanvas()
+
+console.log()
+
+document.body.addEventListener('click', () => {
+    gameCanvas.toggleFullScreen()
+})
