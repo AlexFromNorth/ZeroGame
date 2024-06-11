@@ -1,0 +1,1 @@
+import { GameCanvas } from "./canvas";
