@@ -1,12 +1,12 @@
 import { UserConfig } from 'vite';
 
-const isProduction = process.env.NODE_ENV === 'production';
+// const isProduction = process.env.NODE_ENV === 'production';
 
 const config: UserConfig = {
   root: 'src',
   build: {
     outDir: '../dist',
-    ...(isProduction ? {} : { logLevel: 'info' }) // Установка уровня логирования только в режиме разработки
+    emptyOutDir: true,
   },
   server: {
     host: true,
@@ -15,7 +15,8 @@ const config: UserConfig = {
   },
   optimizeDeps: {
     include: ['console'],
-  }
+  },
+  logLevel: 'info'
 };
 
 export default config;
