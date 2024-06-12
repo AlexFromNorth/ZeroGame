@@ -25,6 +25,14 @@ class GameCanvas {
         return this.ctx
     }
 
+    getWidth(): number {
+        return this.canvas.width
+    }
+
+    getHeight(): number {
+        return this.canvas.height
+    }
+
     toggleFullScreen() {
         if (this.isFullScreen) {
             this.disableFullScreen()

@@ -1,24 +1,30 @@
+import { Player } from './player';
+import { Position } from "../types/types";
+
 export class Room {
     
-    private position: {x: number, y: number}
-    private trait: { color: string }
-    private ctx: CanvasRenderingContext2D
-    
     // свойства
+    private position: Position
+    private trait: { color: string } = { color: 'green' }
+    
 
     // конструктор
-    constructor(ctx: CanvasRenderingContext2D, position: {x: number, y: number}) {
+    constructor(position: Position) {
         this.position = position;
-        this.trait = { color: 'red' }
-        this.ctx = ctx
     }
-
 
     // методы
-    draw() {
-        this.ctx.fillStyle = this.trait.color
-        this.ctx.fillRect(this.position.x + 25, this.position.y + 25, 50, 50)
+    getPosition(){
+        return this.position
     }
+
+    getTrait(){
+        return this.trait
+    }
+
+    activate(player: Player) {
+        
+    }
+
     
 }
-

@@ -1,23 +1,30 @@
+import { Position } from "../types/types";
+
 export class Player{
     
-    private _position: {x: number, y: number} = {x: 0, y: 0}
-    
     // свойства
+    private _position: Position = {x: 4, y: 4}
+    private _health: number = 10
 
     // конструктор
-    constructor() {
-
+    constructor(health: number, position?: Position) {
+        this._health = health
+        if(position) {
+            this._position = position
+        } 
     }
 
+    // методы
     getPosition() {
         return this._position;
     }
 
-    // setPosition(value: {x: number, y: number}) {
-    //     this._position = value
-    //     return this;
-    // }
+    setPosition(value: Position) {
+        this._position = value
+    }
 
-    // методы
+    getHealth() {
+        return this._health;
+    }
 
 }
