@@ -6,6 +6,7 @@ export class Room {
     // свойства
     private position: Position
     private trait: { color: string } = { color: 'green' }
+    static readonly chance: number = 0.1
     
 
     // конструктор
@@ -17,14 +18,10 @@ export class Room {
     getPosition(){
         return this.position
     }
-
+        
     getTrait(){
         return this.trait
-    }
-
-    activate(player: Player) {
-        
-    }
-
-    
+    }  
 }
+
+

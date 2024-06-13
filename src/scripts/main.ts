@@ -2,6 +2,7 @@ import { randomVector } from "../utils/utils";
 import { GameCanvas } from "./canvas";
 import { Player } from "./player";
 import { Room } from "./room";
+import { HealRoom } from "./roomAction/healRoom";
 
 const roomSize = 50
 const roomGap = 10
@@ -13,6 +14,10 @@ const rooms: Map<string, Room> = new Map([
     [`${player.getPosition().x},${player.getPosition().y}`, new Room({ x: player.getPosition().x, y: player.getPosition().y })]
 ])
 loop()
+
+const room1 = new Room({x: 1, y: 2})
+const healRoom = new HealRoom({x: 10, y: 20}, 20)
+
 
 function createRoom() {
     
@@ -26,12 +31,23 @@ function createRoom() {
 
         
         player.setPosition(vector)
+
         if (rooms.has(`${vector.x},${vector.y}`)) {
             loop()
+
+            const room = new HealRoom(vector)
+            rooms.set(`${vector.x},${vector.y}`, room)
+
+            room.setHeal(5)
+            room.activate(player)
+
+            console.log(player.getHealth())
             return
         }
+        const room = new HealRoom(vector)
+        rooms.set(`${vector.x},${vector.y}`, room)
+        // room.activate(player)
 
-        rooms.set(`${vector.x},${vector.y}`, new Room(vector))
         loop()
     }, 1000)
 }

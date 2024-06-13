@@ -27,4 +27,14 @@ export class Player{
         return this._health;
     }
 
+    addHealth(heal: number){
+        this._health = heal
+    }
+
+    addDamage(damage: number){
+        this._health -= damage
+    }
+
+
+
 }
